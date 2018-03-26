@@ -25,7 +25,7 @@ SECRET_KEY = '5rz@*a2*!%lj40j!zc%v6u3hwqpb^yj$m5ncfz191f(=ts2q7!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['realjuanli.com']
+ALLOWED_HOSTS = ['www.realjuanli.com', 'likyeer.pythonanywhere.com']
 
 
 # Application definition
