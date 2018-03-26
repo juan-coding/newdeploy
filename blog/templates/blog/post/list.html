@@ -1,0 +1,50 @@
+{% extends "blog/post/base.html" %}
+{% block title %}
+    post list
+{% endblock %}
+
+{% load staticfiles %}
+
+{% block content %}
+<br><br><br>
+{% if user.is_authenticated %}
+<a href="{% url 'blog:post_create' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+{% endif %}
+<h2>{{ body_title }}</h2><hr>
+{% for post in posts %}
+<h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+<em>Update</em>: {{ post.updated|date:"Y-m-d" }}&nbsp;&nbsp;
+<em>Publish</em>: {{ post.publish|date:"Y-m-d" }}&nbsp;&nbsp;
+<em>Tags</em>:
+    {% for tag in post.tag_list %}
+    <a href="/blog/tag/{{ tag }}">{{ tag }} </a>
+    {% endfor %}
+
+<div>{{ post.body|truncatewords:100|safe}}</div>
+
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page=1">&laquo; first</a>&nbsp;
+            <a href="?page={{ posts.previous_page_number }}">previous</a>&nbsp;
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+        </span>&nbsp;
+
+        {% if posts.has_next %}
+            <a href="?page=1">&laquo; first</a>
+            <!--{% if requst.GET.q %}&nbsp;-->
+                <!--<a href="?page={{ posts.next_page_number }}&?q={{ request.GET.q }}">next</a>&nbsp;-->
+            <!--{% else %}-->
+                <!--<a href="?page={{ posts.next_page_number }}">next</a>&nbsp;-->
+            <!--{% endif %}-->
+        <a href="?page={{ posts.next_page_number }}{% if request.GET.q %}&?q={{ request.GET.q }}{% endif %}">next</a>&nbsp;
+        {% endif %}
+        <a href="?page={{ posts.paginator.num_pages }}">final</a>&nbsp;
+    </span>
+</div>
+{% endblock %}

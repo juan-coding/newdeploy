@@ -1,0 +1,23 @@
+{% extends "blog/post/base.html" %}
+{% block title %}
+    post list
+{% endblock %}
+
+{% load staticfiles %}
+
+{% block content %}
+<br><br>
+    {% if user.is_authenticated %}
+        {% if sent %}
+        <h2>A post <a href="{% url 'blog:post_detail' post.publish.year post.publish.month post.publish.day post.slug  %}">
+        {{ post.title }}"</a> is updated!</h2>
+        {% else %}
+        <h2>{{ sub_title }}</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+        <button type="submit">Update</button>
+        </form>
+        {% endif %}
+    {% endif %}
+{% endblock %}

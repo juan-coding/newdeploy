@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta name="description" content="personal website">
+    <meta name="author" content="Juan Li">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+
+
+     <link rel="stylesheet" href="{% static 'home/css/base.css' %}" type="text/css"/>
+    <!--bootstrap css-->
+    <script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+ 	<link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type = "text/css"/>
+
+
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'home/js/header.js' %}"></script>
+
+
+
+    <link rel="shortcut icon" href="{% static 'home/img/favicon.ico' %}" type="image/x-icon"/>
+
+    <!--add social media buttons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" rel="stylesheet" type="text/css"/>
+    <title>JuanLi|{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+    {% include "home/navbar.html" %}
+    <div id="content">
+        {% block content %} {% endblock %}
+    </div>
+
+	{% include "home/footer.html" %}
+</body>
+</html>

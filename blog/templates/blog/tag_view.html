@@ -1,0 +1,39 @@
+{% extends "blog/post/base.html" %}
+{% block title %}
+    blog tag
+{% endblock %}
+
+{% load staticfiles %}
+
+{% block content %}
+{% for post in posts %}
+<li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+<em>Update</em>: {{ post.updated|date:"Y-m-d" }}&nbsp;&nbsp;
+<em>Publish</em>: {{ post.publish|date:"Y-m-d" }}&nbsp;&nbsp;
+<em>Tags</em>:
+    {% for tag in post.tag_list %}
+    <a href="/blog/tag/{{ tag }}">{{ tag }} </a>
+    {% endfor %}
+
+<div>{{ post.body|truncatewords:100|safe}}</div>
+
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ posts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ posts.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

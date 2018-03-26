@@ -1,0 +1,82 @@
+
+{% extends "blog/post/base.html" %}
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+ {% load staticfiles %}
+{% block content %}
+<br><br><br>
+{% for post in posts %}
+    {% if user.is_authenticated %}
+        <a class="btn btn-default" href="{% url 'blog:post_edit' post.publish.year post.publish.month post.publish.day post.slug  %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    {% endif %}
+
+    {% if post.upload %}
+        <img src="{{ post.upload.url }}" class="img-responsive"/>
+    {% endif %}
+
+<header>
+    <h1>{{ post.title }}</h1>
+
+    Update: {{ post.updated|date:"Y-m-d" }}&nbsp;&nbsp;
+    Publish: {{ post.publish|date:"Y-m-d" }}&nbsp;&nbsp;
+    Tags:
+    {% for tag in post.tag_list %}
+    <a href="/blog/tag/{{ tag }}">{{ tag }} </a>
+    {% endfor %}&nbsp;&nbsp;
+</header>
+<article>
+    <p>{{ post.body|safe|linebreaks }}</p>
+{% endfor %}
+</article>
+<br>
+<!--<h4><a href="/blog/share/{{ post.id }}">Share this post by e-mail</a></h4>-->
+
+<div id="share-buttons">
+ <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?url={{ post.get_absolute_url }}" target="_blank">
+        <img src="https://aboutjuanli.com/assets/facebook-square.png" alt="Facebook" />
+    </a>
+ <!-- Twitter -->
+    <a href="https://twitter.com/share?url={{ post.get_absolute_url }}&text=A nice post via Juan Li" target="_blank">
+        <img src="https://aboutjuanli.com/assets/twitter.png" alt="Twitter" />
+    </a>
+    <!-- LinkedIn -->
+    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ post.get_absolute_url }}" target="_blank">
+        <img src="https://aboutjuanli.com/assets/linkedin.png" alt="LinkedIn" />
+    </a>
+</div>
+
+
+<br>
+<h4>{{ similar_posts_count }} similar post{{ similar_posts_count|pluralize }}</h4>
+    {% for post in similar_posts %}
+        <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+    {% endfor %}<br>
+
+<h4>{{ comment_count }} comment{{ comment_count|pluralize }}</h4>
+{% for comment in comments %}
+    <div class="comment" style="background-color: ">
+        <p>Comment {{ forloop.counter }} by <strong>{{ comment.name }}</strong>  {{ comment.created|date:"Y-m-d" }}</p>
+        {{ comment.body|linebreaks }}
+    </div>
+{% empty %}
+There is no comment yet.
+{% endfor %}
+<h4>Add a new comment</h4>
+<form action="" method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+    <button type="submit">Submit</button>
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
+
+
+
+
+

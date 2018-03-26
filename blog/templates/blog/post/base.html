@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load blog_tags %}
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta name="description" content="personal website">
+    <meta name="author" content="Juan Li">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+
+    <!--bootstrap css-->
+        <script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+ 	<link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type = "text/css"/>
+
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+
+    <script src="{% static 'home/js/header.js' %}"></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+
+    <!--image-->
+    <link rel="shortcut icon" href="{% static 'home/img/favicon.ico' %}" type="image/x-icon"/>
+
+    <title>JuanLi|{% block title %}{% endblock %}</title>
+
+</head>
+
+<style>
+     html,
+        body {
+            height: 100%;
+            }
+
+		.footer {
+   		position: fixed;
+   		left: 0;
+  		bottom: 0;
+   		width: 100%;
+  		color: gray;
+   		text-align: center;
+        }
+
+
+      h1 {
+    color:black;
+    font-size:3em;
+    }
+
+     /* navbar */
+    .navbar-brand {
+    padding-left:2cm;
+    }
+
+    #myNavbar {
+    padding-right:2cm;
+    }
+
+    a:hover {
+    text-decoration:underline;
+    }
+    a:visited {
+    color: #00bfff;
+    }
+
+    .nav li.active a {
+    color:#fff;
+    font-weight:bold;
+    }
+
+   .affix {
+        top: 0px;
+        width: 100%;
+        z-index: 999 !important;
+        }
+
+    #content {
+    padding-left: 1cm;
+    padding-right: 0cm;
+    }
+    #sidebar {
+    padding-bottom: 2cm;
+    }
+
+    #share-buttons img {
+    width: 35px;
+    padding: 5px;
+    border: 0;
+    box-shadow: 0;
+    display: inline;
+    }
+
+
+</style>
+
+
+<body>
+{% include "home/navbar.html" %}
+       <div id="content">
+        <div class="col-sm-10">
+            {% block content %} {% endblock %}
+        </div>
+        <div class="col-sm-2">
+            <br><br><br><br><br>
+            <div id = 'sidebar'>
+                <!--<h4><a href="/blog/search/">search post</a></h4>-->
+                  <!--use custom simple_tag-->
+
+                <form action="/blog/"  method="GET">
+                    <input type="text" name="q" placeholder="Search posts" value="{{ request.GET.q }}"/>
+                    <input type="submit" value="Search"/>
+                </form><br>
+                <h4> TOTAL {% total_posts %} POSTS</h4><br>
+                <h4>RECENT POSTS</h4>
+                <!--use inclusion_tag-->
+                 {% recent_posts 6 %}<br>
+                <h4>MOST COMMENTED POSTS</h4>
+                 {% most_commented_posts 6 %}<br>
+
+                <h4>TAGS</h4>
+                    {% for element in tag_count %}
+                    <a href="/blog/tag/{{ element.tag }}">{{ element.tag }}</a> ({{ element.count }})
+                     {% endfor %}
+                     <br><br>
+                <h4>ARCHIVE</h4>
+                     {% for element in year_count %}
+                        {% if element.ycount %}
+                            <a href="/blog/{{ element.year }}">{{ element.year }}</a> ({{ element.count }})<br>
+                        {% else %}
+                            <ul>
+                                <li><a href="/blog/{{ element.year }}/{{ element.d_month }}">{{ element.c_month }}</a>({{ element.count }})</li>
+                            </ul>
+                        {% endif %}
+                     {% endfor %}
+                     <br>
+                </div>
+            </div>
+        </div>
+
+	{% include "home/footer.html" %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+

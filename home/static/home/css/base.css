@@ -1,0 +1,127 @@
+
+   html,
+   body {
+         height: 100%;
+         }
+
+
+    /* footer */
+	.footer {
+   		left: 0;
+  		bottom: 0;
+   		width: 100%;
+  		color: gray;
+   		text-align: center;
+        }
+
+
+      h1 {
+    color:black;
+    font-size:3em;
+    }
+
+
+    /* navbar */
+    .navbar-brand {
+    padding-left:2cm;
+    }
+
+    #myNavbar {
+    padding-right:2cm;
+    }
+
+
+    /* <a>element */
+    a {
+    color:#00bfff;
+    }
+
+    a:hover {
+    text-decoration:underline;
+    }
+    a:visited {
+    color: #00bfff;
+    }
+
+
+    .nav li.active a {
+    color:#fff;
+    font-weight:bold;
+    }
+
+
+
+      #content {
+    margin-left: 2cm;
+    margin-right: 2cm;
+    }
+
+
+   .affix {
+        top: 0;
+        width: 100%;
+        z-index: 999 !important;
+        }
+
+
+
+
+     /* The typing effect in portfolio page - webDev */
+     .typewriter h1 {
+            font-family: 'Waiting for the Sunrise', cursive;
+            color: orange;
+            overflow: auto;
+            border-right: .05em solid orange; /* cursor */
+            white-space: nowrap;
+            margin: 0 auto; /* scrolling effect as the typing */
+            letter-spacing: .15em; /* customized adjustment if necessary */
+            animation: typing 6s steps(200, end), blink-caret 2s step-end infinite;
+      }
+
+      @keyframes typing {
+            from { width: 0 }
+            to { width: 60% }
+            }
+       /* The typewriter cursor effect */
+        @keyframes blink-caret {
+        from, to { border-color: transparent }
+        30% { border-color: orange; }
+        }
+
+
+
+       .homepage-header {
+       position: relative;
+       margin-left: -100px;
+       margin-right: -100px;
+
+       height: 100vh;
+        background: linear-gradient(black,transparent 90%),
+                    linear-gradient(white, transparent),
+                     linear-gradient(black, transparent),
+
+
+                    url('../img/cover.jpg') no-repeat;
+        background-size: cover;
+       }
+
+       .arrow {
+        position: absolute;
+        width: 50px;
+        bottom: 0px;
+        right: 50%;
+        left: 50%;
+       }
+
+
+       .homepage-main {
+        display: flex;
+       }
+
+
+
+
+
+
+
+

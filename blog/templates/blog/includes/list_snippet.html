@@ -1,0 +1,23 @@
+{% for post in posts %}
+<h2><a href="{% url 'blog:post_detail' post.publish.year post.publish.month post.publish.day post.slug  %}">{{ post.title }}</a></h2>
+<em>{{ post.publish }}</em>
+<div>{{ post.body|truncatewords:100}}</div>
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ posts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ posts.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>

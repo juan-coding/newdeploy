@@ -1,0 +1,18 @@
+{% extends 'home/header.html' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<div class="text-center">
+<h3>Send me a message</h3>
+<form role="form" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+    </div>
+{% endblock %}
+
+
+
+

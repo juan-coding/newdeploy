@@ -1,0 +1,23 @@
+{% extends "home/header.html" %}
+
+   {% load staticfiles %}
+
+{% block title %}
+    home
+{% endblock %}
+
+{% block content %}
+<header class="typewriter homepage-header">
+       <h1 style="position: absolute; top:300px; left:50px;">WELCOME TO MY SITE! I'M A WEB DEVELOPER..</h1>
+    <a href="#homepage-main"><img class="arrow" src="{% static 'home/img/arrow.svg' %}" alt="arrow"/></a>
+</header>
+
+<main id="homepage-main">
+    <h2>A short movie about this site</h2>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/cf6PpNBXgWE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+</main>
+
+
+
+{% endblock %}

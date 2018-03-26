@@ -1,0 +1,63 @@
+{% extends "home/header.html" %}
+{% block title %}
+    about me
+{% endblock %}
+
+{% load staticfiles %}
+
+
+
+{% block content%}
+<br>
+<br>
+<br>
+
+    <div class="row">
+
+<div class="col-lg-4 col-md-4 col-xs-4 thumb">
+    <a class="thumbnail">
+        <img class="img-responsive" src="{% static 'home/img/profile.jpg' %}" alt="face">
+    </a>
+</div>
+
+        <!--<div style="background-color:#F2F3F4">-->
+<div class="col-lg-4 col-md-4 col-xs-4">
+         <h2>Juan Li</h2>
+        <p>Junior data scientist</p>
+        <p>Programming enthusiast</p>
+        <p>Medical researcher</p>
+</div>
+<div class="col-lg-4 col-md-4 col-xs-4">
+
+        <h2>Current status</h2>
+        <p><strong>Looking for job!</strong></p>
+        <P>Phone: +31 06127366 (The Netherlands)</p>
+        <!--<p>Email: juanli.work@gmail.com</p>-->
+    <a href="mailto:juanli.work@gmail.com">juanli.work@gmail.com</a>
+</div>
+
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+            <div class="row">
+              {% include 'about/includes/snippet.html' %}
+            </div>
+
+{% endblock %}
+
+
+
+
+
+
