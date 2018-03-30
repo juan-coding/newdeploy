@@ -5,25 +5,32 @@
 
 
 {% block content %}
-<br>
-<br>
-<br>
+<div class="app-wrapper" style="margin-top: 80px;">
+    <div class="content-list" style="border-bottom: 2px dashed grey;">
+        <ul>
+            <li><a href="#fcc-app">freeCodeCamp projects</a></li>
+            <li><a href="#other">Other projects</a></li>
+        </ul>
+    </div>
 
-<div class="app" style="display: flex; justify-content: center; ">
+    <!--fcc project-->
+    <div id="fcc-app">
+    <h3>freeCodeCamp projects</h3>
+    <div class="app" style="display: flex; justify-content: center; ">
 
-    <div class="video-display">
+        <div class="video-display">
         <video width="95%" autoplay controls>
             <source  src="../media/simon.mp4">
             <p>displaying app</p>
         </video>
-    </div>
+     </div>
     <div class="code-display" style="margin-left: -30;">
         <iframe  style="margin-left: -60; margin-top: 30;" scrolling='no' title='Simon Game' src='//codepen.io/juan-coding/embed/preview/WMVpJL/?height=144&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 30%;'>See the Pen <a href='https://codepen.io/juan-coding/pen/WMVpJL/'>Simon Game</a> by Juan Li  (<a href='https://codepen.io/juan-coding'>@juan-coding</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
     </div>
-</div>
+    </div>
 
-<div class="app" style="display: flex; justify-content: center; ">
-    <div class="video-display">
+    <div class="app" style="display: flex; justify-content: center; ">
+        <div class="video-display">
          <video width="95%" autoplay controls>
             <source  src="../media/tic-tac.mp4">
             <p>displaying app</p>
@@ -61,6 +68,18 @@
     </div>
 </div>
 
+    </div>
+
+        <div id="other">
+<h3>Other projects</h3>
+    <p>In progress...</p>
+            </div>
+
+
+
+
+
+</div>
 
 
 
